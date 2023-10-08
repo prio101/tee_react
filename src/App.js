@@ -12,6 +12,8 @@ import Signup from "./auth/Signup";
 import ProductDescription from "./products/productDescription";
 import DashBoard from "./DashBoard";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import CreateProduct from "./DashBoard/CreateProduct";
+
 export const baseurl = "http://localhost:3001/api/v1";
 
 function PrivateRoute({ children, ...rest }) {
@@ -59,9 +61,15 @@ function App() {
             <ProductDescription />
           </Route>
 
+          <PrivateRoute exact path='/dashboard/create-product'>
+            <CreateProduct />
+          </PrivateRoute>
+          
           <PrivateRoute path='/dashboard'>
             <DashBoard />
           </PrivateRoute>
+
+          
         </Switch>
       </div>
     </Router>
