@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import ProductCard from './productCard';
 import axios from 'axios';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import Seach from './search';
+
 const baseurl = "http://localhost:3001/api/v1/";
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -22,11 +24,16 @@ const Products = () => {
         console.log("Show Data",products);
     }
 
+    const handleClick = async (data) => {
+        setProducts(data.data);
+        setLoading(false);
+    }
+
 
     return (
         <div>
             <h2 className='text-xl text-blue-400'>Products</h2>
-
+            <Seach searchClick={handleClick}/>
             {loading && <p className='text-center'>Loading...</p>}
 
             {!loading && products.length === 0 && <p className='text-center text-gray-600 text-2xl'>No products available</p>}
