@@ -8,24 +8,22 @@ import {
   Link
 } from "react-router-dom";
 
+import ProductDescription from "./products/productDescription";
+export const baseurl = "http://localhost:3001/api/v1";
 function App() {
   return (
     <Router>
       <div>
         <Navigation />
-        <nav>
-          <ul>
-            <li>
-              
-            </li>
-          </ul>
-        </nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/products">
+          <Route exact path="/products">
             <Products />
+          </Route>
+          <Route path="/products/:id">
+            <ProductDescription />
           </Route>
         </Switch>
       </div>
